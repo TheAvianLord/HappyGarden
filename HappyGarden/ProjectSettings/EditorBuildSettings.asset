@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Garden.unity
-    guid: f57ff0843b383e34bb34a81d9d8fefa4
+    path: Assets/galaxy.unity
+    guid: 3e5f9f71e0ca4437caaa198d1df01ba1
+  - enabled: 1
+    path: Assets/Leap Hands Demo (Desktop) 1.unity
+    guid: 9795866f2e94d9f4fb9d9129d1bca486
