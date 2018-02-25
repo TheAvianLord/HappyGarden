@@ -11,3 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Leap Hands Demo (Desktop) 1.unity
     guid: 9795866f2e94d9f4fb9d9129d1bca486
+  - enabled: 1
+    path: Assets/Lose.unity
+    guid: 8e368de448f0cf34886e280aacf637de
+  - enabled: 1
+    path: Assets/Win.unity
+    guid: 16c68415ac367144a8bce8e9737f1248

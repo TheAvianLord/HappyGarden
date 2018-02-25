@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EnemyBehavior : MonoBehaviour
 {
@@ -9,12 +11,15 @@ public class EnemyBehavior : MonoBehaviour
     public GameObject projectile;
     public GameObject starter;
     float timer = 1f;
-    public int enemyHealth = 100;
+    public float enemyHealth;
+    public Image healthEnemyBar;
+    public float maxHealth = 100;
 
     // Use this for initialization
     void Start ()
     {
         rb = GetComponent<Rigidbody>();
+        enemyHealth = maxHealth;
     }
 	
 	// Update is called once per frame
@@ -38,13 +43,24 @@ public class EnemyBehavior : MonoBehaviour
 
         }
 
+        healthEnemyBar.fillAmount = enemyHealth / maxHealth;
+
     }
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "star")
+        if (col.gameObject.tag == "star" )
         {
-            enemyHealth -= 10;
+            StarBehavior starScript = col.gameObject.GetComponent<StarBehavior>();
+            if (starScript.targetEnemy == true)
+            {
+                enemyHealth -= 10;
+                if (enemyHealth <= 0)
+                {
+                    SceneManager.LoadScene("Win");
+                }
+            }
+            
         }
     }
 }

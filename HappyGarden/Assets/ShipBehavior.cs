@@ -1,17 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ShipBehavior : MonoBehaviour
 {
+    public Image healthBar;
+    public float maxHealth = 100;
     public GameObject finger;
     public Rigidbody rb;
-    public int health = 100;
+    public float health = 100;
 
     // Use this for initialization
     void Start ()
     {
         rb = GetComponent<Rigidbody>();
+        health = maxHealth;
     }
 	
 	// Update is called once per frame
@@ -28,6 +33,8 @@ public class ShipBehavior : MonoBehaviour
             rb.velocity = spd;
             transform.LookAt(finger.transform);
         }
+
+        healthBar.fillAmount = health / maxHealth;
         
     }
 
@@ -36,6 +43,10 @@ public class ShipBehavior : MonoBehaviour
         if (col.gameObject.tag == "bullet")
         {
             health -= 10;
+            if (health <= 0)
+            {
+                SceneManager.LoadScene("Lose");
+            }
         }
     }
 }
